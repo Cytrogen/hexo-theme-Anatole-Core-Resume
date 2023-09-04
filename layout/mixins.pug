@@ -1,0 +1,66 @@
+mixin make_post(item, is_detail)
+	.post.animated.fadeInDown(id=item.title)
+		.post-title
+			h1
+				//- 删除了原先的条件判断，改为无论如何都只显示文章标题
+				//- Removed the original condition, and changed to display the post title in any case
+				a= item.title
+
+				//- 如果是post页面，则显示文章标题，否则显示文章标题的链接
+				//- if it is a post page, display the post title, otherwise display the link to the post title
+				//- if is_detail
+				//- 	a= item.title
+				//- else
+				//- 	a(href= url_for(item.path))= item.title
+		
+		if is_detail
+			.post-content!= item.content
+		else
+			.post-content
+				- var summary = item.summary || item.content
+				p!= truncate(strip_html(summary), {length: 160})
+
+		.post-footer: .meta
+			.info
+				hr
+
+
+mixin make_pager()
+	- var prev = page.prev_link
+	- var next = page.next_link
+	.pagination
+		ul.clearfix
+			if page.prev
+				li.pre.pagbuttons
+					a.btn(role="navigation",href=url_for(prev))= __('prev')
+			if page.next
+				li.next.pagbuttons
+					a.btn(role="navigation",href=url_for(next))= __('next')
+
+
+mixin postList()
+	.archive
+		- var year = 0;
+		- var change = false;
+		- var firstYear = true;
+		- page.posts.each(function (item) {
+			- var itemYear = date(item.date, 'YYYY') - 0;
+			- change = year !== itemYear;
+			- year = change ? itemYear : year;
+			if change
+				if firstYear
+					| <div class="listing-title">
+					!= year
+					| </div><ul class="listing">
+					- firstYear = false;
+				else
+					| </ul><div class="listing-title">
+					!= year
+					| </div><ul class="listing">
+			
+			.listing-item
+				.listing-post
+					a(href= url_for(item.path), title= item.title)= item.title
+					div.post-time
+						span.date= date(item.date, 'MM-DD')
+		- })

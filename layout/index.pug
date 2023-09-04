@@ -1,0 +1,41 @@
+extends partial/layout
+block content
+	//- 优先设置主页面为隐藏，等待页面加载完成后再显示，避免页面加载时的闪烁
+	//- Set the content to hidden first, and then display it after the page is loaded to avoid flashing during page loading
+	.content(style="display:none;")
+		script.
+			//- 如果是移动端，则设置content的margin-top为sidebar的高度
+			//- If it is a mobile terminal, set the margin-top of content to the height of sidebar
+			window.onload = function() {
+				if (window.matchMedia("(max-width: 960px)").matches) {
+					var sidebar = document.querySelector('.sidebar');
+					var sidebarHeight = sidebar.offsetHeight;
+					document.querySelector('.content').style.marginTop = `${sidebarHeight}px`;
+				}
+				//- 页面加载完成后，显示content
+				//- Display content after page loading is complete
+				document.querySelector(`.content`).style.display = "block";
+
+				//- 监听窗口大小变化，假设用户在桌面端上修改了窗口大小，需要重新设置content的margin-top
+				//- Listen for window size changes, assuming that the user modifies the window size on the desktop terminal, the margin-top of content will get reset
+				window.addEventListener('resize', function() {
+					if (window.matchMedia("(max-width: 960px)").matches) {
+						var sidebar = document.querySelector('.sidebar');
+						var sidebarHeight = sidebar.offsetHeight;
+						document.querySelector('.content').style.marginTop = `${sidebarHeight}px`;
+					} else {
+						//- 如果是桌面端，则设置content的margin-top为60px
+						//- If it is a desktop terminal, set the margin-top of content to 60px
+						document.querySelector('.content').style.marginTop = "60px";
+					}
+				});
+			}
+			
+		//- 如果是post页面，则显示文章内容
+		//- If it is a post page, display the post content
+		- page.posts.each(function (item) {
+			include mixins
+			+make_post(item, true)
+		- })
+		include mixins
+		+make_pager(__('prev'), __('next'))

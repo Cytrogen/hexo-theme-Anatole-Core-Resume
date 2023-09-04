@@ -1,0 +1,13 @@
+doctype
+html(lang="en-us")
+  head
+    include head
+
+  body
+    include nav
+    include sidebar
+    block content
+
+    script(src= url_for('js/jquery-migrate-1.2.1.min.js'))
+    script(src= url_for('js/jquery.appear.js'))
+    script(src=url_for("/js/add-bookmark.js"))

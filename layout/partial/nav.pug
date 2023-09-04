@@ -1,0 +1,20 @@
+.page-top.animated.fadeInDown
+  .nav
+    //- 循环source/_posts下的所有markdown文件，并根据其title生成相对应的锚点
+    //- loop all markdown files in source/_posts and generate corresponding anchor elements according to their titles
+    if page.posts
+      - page.posts.each(function (item) {
+          li
+            a(href= `#${item.title}`)= item.title
+      - })
+    
+
+  .information
+    .back_btn
+      //- 如果是post页面，则显示返回按钮，否则隐藏
+      //- if it is a post page, display the return button, otherwise hide it
+      li
+        if is_post()
+          a.fa.fa-chevron-left(onclick="window.history.go(-1)") 
+        else
+          a.fa.fa-chevron-left(onclick="window.history.go(-1)",style="display:none;") 

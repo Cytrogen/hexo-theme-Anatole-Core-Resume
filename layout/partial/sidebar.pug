@@ -1,0 +1,45 @@
+.sidebar.animated.fadeInDown
+  .side-content
+    .logo-title
+      .title
+        img(src= url_for('images/logo@2x.png'),style="width:127px;")
+        h3(title="")
+          a(href="/")= config.title
+
+    ul.social-links
+      //- TODO：将这段代码修改为使用theme配置文件中的信息，而非手动修改
+      //- TODO: Modify this code to use the information in the theme configuration file instead of manually modifying it
+      
+      li 
+        i.fa.fa-phone
+        | (xxx)yyy-zzzz
+
+      li
+        i.fa.fa-address-card 
+        | xxx yyy zzz
+
+      if theme.github
+        li
+          a(href=theme.github)
+            i.fa.fa-github
+            | xxx
+
+      if theme.linkedin
+        li
+          a(href=theme.linkedin)
+            i.fa.fa-linkedin
+            | linkedin.com/in/xxx
+            
+      if theme.mail
+        li
+          a(href=theme.mail)
+            i.fa.fa-envelope
+            | xxx@yyy.zzz
+        
+      if theme.QQ
+        li
+          a(href= theme.QQ)
+            i.fa.fa-qq
+            | xxx
+            
+  include footer

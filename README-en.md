@@ -16,7 +16,7 @@ This theme is based on mrcore's [hexo-theme-Anatole-Core](https://github.com/mrc
 
 ## DEMO
 
-DEMO: There is no DEMO! I haven't built it at all! I'll do it later!
+DEMO: https://hexo-theme-anatole-core-resume.netlify.app
 
 
 ## Usage

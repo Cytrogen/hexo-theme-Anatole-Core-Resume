@@ -15,7 +15,7 @@
 
 ## 外观
 
-DEMO：根本没有DEMO！完全没搭建！之后再说！
+DEMO：https://hexo-theme-anatole-core-resume.netlify.app
 
 
 ## 使用

@@ -724,3 +724,9 @@ a.btn {
     display: grid;
   }
 }
+
+/* MARKDOWN */
+
+img[alt=CERTI] {
+  width: 75%;
+}

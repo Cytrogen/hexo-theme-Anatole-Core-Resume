@@ -13,6 +13,12 @@ This theme is based on mrcore's [hexo-theme-Anatole-Core](https://github.com/mrc
 - Super simple (only one homepage and nothing else. I deleted a lot of functions)
 - Totally not finished! I'll do it later!
 
+If you need to upload a certificate photo, you can use the following Markdown syntax to automatically set the size of the photo:
+
+```markdown
+![CERTI](picture link)
+```
+
 
 ## DEMO
 
@@ -51,6 +57,11 @@ For other places that need to be configured, please see `themes/anatole-core-res
 Like the original author of the theme, I am not a front-end worker, but I am learning how to modify this theme. If I find a better way to optimize the code in the future, I will try to improve it.
 
 Well of course, DIY means you can get what you want~
+
+### 11/29/2023
+
+- Updated the dependency version in `package.json`
+- Added automatic adjustment function for picture size
 
 ### 09/04/2023
 
